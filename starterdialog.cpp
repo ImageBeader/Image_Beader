@@ -12,15 +12,14 @@ StarterDialog::StarterDialog(QWidget *parent) : QDialog(parent) {
 }
 
 void StarterDialog::setupUi() {
-    qDebug() << "Setting up Dialog UI";
 
     QVBoxLayout *layout = new QVBoxLayout();
     this->setLayout(layout);
 
-    QLabel *title = new QLabel("Image Beader");
+    QLabel *title = new QLabel(tr("Image Beader"));
     layout->addWidget(title);
 
-    QPushButton *create_new_btn = new QPushButton("Convert from a new Image");
+    QPushButton *create_new_btn = new QPushButton(tr("Convert from a new Image"));
     connect(create_new_btn, &QPushButton::clicked, this, &StarterDialog::newImage);
     layout->addWidget(create_new_btn);
 
@@ -31,7 +30,6 @@ void StarterDialog::setupUi() {
 }
 
 void StarterDialog::newImage(){
-    qDebug() << "Creating new Image";
     NewImageWizard *new_image_wizard = new NewImageWizard(this);
     new_image_wizard->show();
 }
