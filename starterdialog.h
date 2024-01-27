@@ -4,11 +4,17 @@
 #include <QDialog>
 
 class StarterDialog : public QDialog {
-private:
-    void setupUi();
+    Q_OBJECT
+
 public:
     StarterDialog(QWidget *parent = nullptr);
     ~StarterDialog();
+
+private:
+    void setupUi();
+
+private slots:
+    void newImage();
 };
 
 #endif // STARTERDIALOG_H

@@ -18,7 +18,8 @@ void StarterDialog::setupUi() {
     QLabel *title = new QLabel("Image Beader");
     layout->addWidget(title);
 
-    QPushButton *create_new_btn = new QPushButton("Convert from a new Image.");
+    QPushButton *create_new_btn = new QPushButton("Convert from a new Image");
+    connect(create_new_btn, &QPushButton::clicked, this, &StarterDialog::newImage);
     layout->addWidget(create_new_btn);
 
     /*
@@ -26,5 +27,10 @@ void StarterDialog::setupUi() {
     layout->addWidget(open_file_btn);
     */
 }
+
+void StarterDialog::newImage(){
+    qDebug() << "Creating new Image";
+}
+
 
 StarterDialog::~StarterDialog(){}
