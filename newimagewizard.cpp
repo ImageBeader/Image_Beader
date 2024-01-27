@@ -1,10 +1,11 @@
 #include "newimagewizard.h"
+#include "imagefileloadpage.h"
 
 NewImageWizard::NewImageWizard(QWidget *parent) : QWizard(parent){
 
     //Adding pages
     //TODO: Add intro page
-    //TODO: Add image file load page
+    this->addPage(new ImageFileLoadPage);
     //TODO: Add Configuration file.
     //TODO: Add Processing screen
 

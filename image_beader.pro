@@ -9,12 +9,14 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    imagefileloadpage.cpp \
     main.cpp \
     mainibwindow.cpp \
     newimagewizard.cpp \
     starterdialog.cpp
 
 HEADERS += \
+    imagefileloadpage.h \
     mainibwindow.h \
     newimagewizard.h \
     starterdialog.h
