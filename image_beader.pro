@@ -11,10 +11,12 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainibwindow.cpp \
+    newimagewizard.cpp \
     starterdialog.cpp
 
 HEADERS += \
     mainibwindow.h \
+    newimagewizard.h \
     starterdialog.h
 
 # Default rules for deployment.

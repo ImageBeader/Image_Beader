@@ -1,4 +1,6 @@
 #include "starterdialog.h"
+#include "newimagewizard.h"
+
 #include <QDebug>
 
 #include <QVBoxLayout>
@@ -30,6 +32,8 @@ void StarterDialog::setupUi() {
 
 void StarterDialog::newImage(){
     qDebug() << "Creating new Image";
+    NewImageWizard *new_image_wizard = new NewImageWizard(this);
+    new_image_wizard->show();
 }
 
 
