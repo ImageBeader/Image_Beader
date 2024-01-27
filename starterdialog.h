@@ -12,8 +12,6 @@ public:
 
 private:
     void setupUi();
-
-private slots:
     void newImage();
 };
 
