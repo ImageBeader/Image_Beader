@@ -1,6 +1,8 @@
 #include "newimagewizard.h"
 #include "imagefileloadpage.h"
 
+#include <QDebug>
+
 NewImageWizard::NewImageWizard(QWidget *parent) : QWizard(parent){
 
     //Adding pages
@@ -13,5 +15,5 @@ NewImageWizard::NewImageWizard(QWidget *parent) : QWizard(parent){
 }
 
 void NewImageWizard::accept() {
-
+    qDebug() << "accepted Wizard";
 }

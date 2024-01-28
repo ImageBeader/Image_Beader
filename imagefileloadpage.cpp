@@ -19,7 +19,7 @@ ImageFileLoadPage::ImageFileLoadPage(QWidget *parent) : QWizardPage(parent) {
 
     //File browser
     QWidget *file_load_w = new QWidget();
-    file_load_w->setLayout(new QHBoxLayout);
+    file_load_w->setLayout(new QHBoxLayout());
     this->layout()->addWidget(file_load_w);
 
     this->filename_line = new QLineEdit();
@@ -30,12 +30,18 @@ ImageFileLoadPage::ImageFileLoadPage(QWidget *parent) : QWizardPage(parent) {
     this->connect(file_browse_btn,&QPushButton::clicked,this,&ImageFileLoadPage::onBrowseFile);
     file_load_w->layout()->addWidget(file_browse_btn);
 
+
+    //image preview
+    QWidget *image_preview_w = new QWidget();
+    image_preview_w->setLayout(new QVBoxLayout());
+    this->layout()->addWidget(image_preview_w);
+
     this->image_scene = new QGraphicsScene();
     QGraphicsView *preview_view = new QGraphicsView(image_scene);
-    this->layout()->addWidget(preview_view);
+    image_preview_w->layout()->addWidget(preview_view);
 
     this->image_filepath_label = new QLabel(tr("Loaded Image: "));
-    this->layout()->addWidget(this->image_filepath_label);
+    image_preview_w->layout()->addWidget(this->image_filepath_label);
 }
 
 void ImageFileLoadPage::onBrowseFile() {
@@ -64,7 +70,11 @@ void ImageFileLoadPage::onInputFile() {
 
 void ImageFileLoadPage::loadPreview() {
     this->image_filepath_label->setText(tr("Loaded Image: ") + this->image_filepath);
-    QGraphicsPixmapItem *image_item = new QGraphicsPixmapItem(QPixmap(this->image_filepath));
+
+    QPixmap preview_image = QPixmap(this->image_filepath);
+    QGraphicsPixmapItem *image_item = new QGraphicsPixmapItem(preview_image);
+
     this->image_scene->clear();
+    this->image_scene->setSceneRect(preview_image.rect());
     this->image_scene->addItem(image_item);
 }
