@@ -2,19 +2,21 @@
 #define IMAGEFILELOADPAGE_H
 
 #include <QWizardPage>
+#include <QGraphicsScene>
 #include <QLineEdit>
-#include <QGraphicsView>
 #include <QString>
+#include <QLabel>
 
 class ImageFileLoadPage : public QWizardPage
 {
     Q_OBJECT
 
 private:
-    QLineEdit *filename_line;
-    QGraphicsView *image_preview;
     QString image_filepath;
 
+    QLineEdit *filename_line;
+    QLabel *image_filepath_label;
+    QGraphicsScene *image_scene;
 
     void onBrowseFile();
     void onInputFile();

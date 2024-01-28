@@ -4,9 +4,13 @@
 #include <QHBoxLayout>
 
 #include <QPushButton>
+#include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QDebug>
+#include <QFileDialog>
+#include <QPixmap>
+#include <QGraphicsPixmapItem>
 
-#include<QDebug>
-#include<QFileDialog>
 
 ImageFileLoadPage::ImageFileLoadPage(QWidget *parent) : QWizardPage(parent) {
 
@@ -26,8 +30,12 @@ ImageFileLoadPage::ImageFileLoadPage(QWidget *parent) : QWizardPage(parent) {
     this->connect(file_browse_btn,&QPushButton::clicked,this,&ImageFileLoadPage::onBrowseFile);
     file_load_w->layout()->addWidget(file_browse_btn);
 
-    this->image_preview = new QGraphicsView();
-    this->layout()->addWidget(this->image_preview);
+    this->image_scene = new QGraphicsScene();
+    QGraphicsView *preview_view = new QGraphicsView(image_scene);
+    this->layout()->addWidget(preview_view);
+
+    this->image_filepath_label = new QLabel(tr("Loaded Image: "));
+    this->layout()->addWidget(this->image_filepath_label);
 }
 
 void ImageFileLoadPage::onBrowseFile() {
@@ -55,5 +63,8 @@ void ImageFileLoadPage::onInputFile() {
 }
 
 void ImageFileLoadPage::loadPreview() {
-    qDebug() << "load preview";
+    this->image_filepath_label->setText(tr("Loaded Image: ") + this->image_filepath);
+    QGraphicsPixmapItem *image_item = new QGraphicsPixmapItem(QPixmap(this->image_filepath));
+    this->image_scene->clear();
+    this->image_scene->addItem(image_item);
 }
