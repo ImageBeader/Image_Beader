@@ -4,7 +4,7 @@
 #include <QWizardPage>
 #include <QLineEdit>
 #include <QGraphicsView>
-
+#include <QString>
 
 class ImageFileLoadPage : public QWizardPage
 {
@@ -13,8 +13,12 @@ class ImageFileLoadPage : public QWizardPage
 private:
     QLineEdit *filename_line;
     QGraphicsView *image_preview;
+    QString image_filepath;
 
-    void browseFile();
+
+    void onBrowseFile();
+    void onInputFile();
+    void loadPreview();
 
 public:
     ImageFileLoadPage(QWidget *parent = nullptr);
